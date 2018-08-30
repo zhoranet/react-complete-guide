@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 import Radium, { StyleRoot } from 'radium';
 
@@ -83,21 +83,21 @@ class App extends Component {
       }
     }
 
-    const classes = [];
+    const assignedClasses = [];
 
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
 
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
       <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
         <h1>Contact list</h1>
-        <p className={classes.join(' ')}>See list of contacts below</p>
+        <p className={assignedClasses.join(' ')}>See list of contacts below</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
