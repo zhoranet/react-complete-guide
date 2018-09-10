@@ -1,23 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Radium from 'radium';
 import classes from './Person.css';
 import ErrorBoundary from '../../../containers/ErrorBoundary/ErrorBoundary';
 
+class Person extends Component {
 
+    constructor(props) {
+        super(props);
+        console.log('[Person.js] inside constructor');
+      }
+    
+    componentWillMount() {
+        console.log('[Person.js] inside componentWillMount');
+    }
 
-const person = ( props ) => {
+    componentDidMount() {
+        console.log('[Person.js] inside componentDidMount');
+    }
 
-    // if(Math.random() > 0.7) { throw new Error('Something wen wrong'); }
+    componentWillReceiveProps(nextProps) {
+        console.log('[UPDATE Person.js] inside componentWillReceiveProps', nextProps);
+    }
 
-    return (
-        <ErrorBoundary>
-            <div className={classes.Person} >
-                <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
-                <p>{props.children}</p>
-                <input type="text" onChange={props.changed} value={props.name} />
-            </div>
-        </ErrorBoundary>
-    )
-};
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[UPDATE Person.js] inside shouldComponentUpdate', nextProps, nextState);
+        return nextProps.Person !== this.props.Person;
+    }
 
-export default Radium(person);
+    componentWillUpdate(nextProps, nextState) {
+        console.log('[UPDATE Person.js] inside componentWillUpdate', nextProps, nextState);        
+    }
+
+    componentDidUpdate() {
+        console.log('[UPDATE Person.js] inside componentDidUpdate');        
+    }
+
+    render() {
+
+        console.log('[Person.js] inside render');
+
+        return (
+            <ErrorBoundary>
+                <div className={classes.Person} >
+                    <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
+                    <p>{this.props.children}</p>
+                    <input type="text" onChange={this.props.changed} value={this.props.name} />
+                </div>
+            </ErrorBoundary>
+        ); 
+    }
+}
+
+export default Radium(Person);

@@ -22,7 +22,7 @@ const cockpit =(props) => {
 
     return(
         <div className={classes.Cockpit}>
-            <h1>Contact list</h1>
+            <h1>{props.appTitle}</h1>
             <p className={assignedClasses.join(' ')}>See list of contacts below</p>
             <button 
             className={btnClass}         
