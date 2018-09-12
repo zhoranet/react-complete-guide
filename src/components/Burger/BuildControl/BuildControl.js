@@ -8,7 +8,4 @@ const buildControl = (props) => (
         <button className={classes.More} onClick={props.onIngridientAdded}>More</button>
     </div>
 )
-
-
-
 export default buildControl;

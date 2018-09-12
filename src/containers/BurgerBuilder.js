@@ -24,7 +24,8 @@ class BurgerBuidler extends Component {
             meat: 0
         },
         totalPrice: 0,
-        purchasable: false
+        purchasable: false,
+        purchasing: false
     }
 
     updatePurchasableState(ingridients) {
@@ -63,6 +64,10 @@ class BurgerBuidler extends Component {
         this.updatePurchasableState(newIngridients);
     }
 
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
     render() {
 
         const disabledInfo = { ...this.state.ingridients };
@@ -74,12 +79,15 @@ class BurgerBuidler extends Component {
         return(
             <Aux>
                 <React.StrictMode>
-                <Modal><OrderSummary ingridients={this.state.ingridients}/></Modal>
+                <Modal show={this.state.purchasing}>
+                    <OrderSummary ingridients={this.state.ingridients}/>
+                </Modal>
                 <Burger ingridients={this.state.ingridients}></Burger>
                 <BuildControls 
                     purchasable={this.state.purchasable}
                     totalPrice={this.state.totalPrice}
                     disabledInfo={disabledInfo}
+                    ordered={this.purchaseHandler}
                     onIngridientAdded={this.addIngridientHandler} 
                     onIngridientRemoved={this.removeIngridientHandler} ></BuildControls>
                 </React.StrictMode>                
