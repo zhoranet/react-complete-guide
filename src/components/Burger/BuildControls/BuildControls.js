@@ -9,15 +9,19 @@ const labels = [
     { label: 'Meat', type: 'meat' }    
 ];
 
-let controls = labels.map(ctrl => (
-    <BuildControl key={ctrl.label} label={ctrl.label} ></BuildControl>
-));
-
-
-
 const buildControls = (props) => (
     <div className={classes.BuildControls} >
-        {controls}
+        <p>Total price: <strong>{props.totalPrice.toFixed(2)}</strong></p>
+        {labels.map(ctrl => (
+            <BuildControl 
+                key={ctrl.label} 
+                label={ctrl.label} 
+                isDisabled={props.disabledInfo[ctrl.type]}
+                onIngridientAdded={()=> props.onIngridientAdded(ctrl.type)} 
+                onIngridientRemoved={()=> props.onIngridientRemoved(ctrl.type)} >
+            </BuildControl>
+        ))}
+        <button className={classes.OrderButton} disabled={!props.purchasable} >ORDER NOW</button>
     </div>
 );
 
