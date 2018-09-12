@@ -65,7 +65,15 @@ class BurgerBuidler extends Component {
     }
 
     purchaseHandler = () => {
-        this.setState({purchasing: true});
+        this.setState({purchasing: true});    
+    }
+
+    purchaseCancelHandler = () => {
+        this.setState({purchasing: false});
+    }
+
+    purchaseContinueHandler = () => {
+        alert('Please, continue!');
     }
 
     render() {
@@ -79,8 +87,12 @@ class BurgerBuidler extends Component {
         return(
             <Aux>
                 <React.StrictMode>
-                <Modal show={this.state.purchasing}>
-                    <OrderSummary ingridients={this.state.ingridients}/>
+                <Modal show={this.state.purchasing} close={this.purchaseCancelHandler}>
+                    <OrderSummary 
+                        price={this.state.totalPrice}
+                        ingridients={this.state.ingridients}
+                        close={this.purchaseCancelHandler}
+                        continue={this.purchaseContinueHandler}/>
                 </Modal>
                 <Burger ingridients={this.state.ingridients}></Burger>
                 <BuildControls 
