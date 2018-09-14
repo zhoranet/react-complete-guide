@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Layout from './components/Layout/Layout';
-import BurgerBuidler from './containers/BurgerBuilder';
+
+import Blog from './containers/Blog/Blog';
 
 class App extends Component {
   render() {
     return (
-      <Layout >
-       <BurgerBuidler></BurgerBuidler>
-      </Layout>
+      <div className="App">
+        <Blog />
+      </div>
     );
   }
 }
