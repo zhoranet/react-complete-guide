@@ -27,7 +27,7 @@ class BurgerBuidler extends Component {
     }
 
     componentDidMount() {
-        axios.get('/ingredients.1json').then(r => {
+        axios.get('/ingredients.json').then(r => {
             this.setState({
                 ingridients: r.data
             });            
