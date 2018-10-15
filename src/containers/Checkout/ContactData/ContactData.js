@@ -18,12 +18,12 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: '',
+                value: 'Michael',
                 validation: {
                     required: true
                 },
-                valid: false,
-                touched: false
+                valid: true,
+                touched: true
             },
             street: {
                 elementType: 'input',
@@ -31,12 +31,12 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Street'
                 },
-                value: '',
+                value: '2345 Main st.',
                 validation: {
                     required: true
                 },
-                valid: false,
-                touched: false
+                valid: true,
+                touched: true
             },
             zipCode: {
                 elementType: 'input',
@@ -44,14 +44,14 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'ZIP Code'
                 },
-                value: '',
+                value: '98101',
                 validation: {
                     required: true,
                     minLength: 5,
                     maxLength: 5,
                     isNumeric: true
                 },
-                valid: false,
+                valid: true,
                 touched: false
             },
             country: {
@@ -60,11 +60,11 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Country'
                 },
-                value: '',
+                value: 'Finland',
                 validation: {
                     required: true
                 },
-                valid: false,
+                valid: true,
                 touched: false
             },
             email: {
@@ -73,12 +73,12 @@ class ContactData extends Component {
                     type: 'email',
                     placeholder: 'Your E-Mail'
                 },
-                value: '',
+                value: 'a@b.com',
                 validation: {
                     required: true,
                     isEmail: true
                 },
-                valid: false,
+                valid: true,
                 touched: false
             },
             deliveryMethod: {
@@ -94,7 +94,7 @@ class ContactData extends Component {
                 valid: true
             }
         },
-        formIsValid: false
+        formIsValid: true
     }
 
     orderHandler = ( event ) => {
