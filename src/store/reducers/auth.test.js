@@ -3,22 +3,22 @@ import * as actionTypes from '../actions/actionTypes';
 
 describe('auth reducer', () => {
     it('should return the initial state', () => {
-        expect(reducer(undefined, {})).toEqual({ 
+        expect(reducer(undefined, {})).toEqual({
             token: null,
             userId: null,
             error: null,
             loading: null,
-            authRedirectPath:"/"
+            authRedirectPath: "/"
         });
     });
 
     it('should store token ', () => {
-        expect(reducer({ 
+        expect(reducer({
             token: null,
             userId: null,
             error: null,
             loading: null,
-            authRedirectPath:"/"
+            authRedirectPath: "/"
         }, {
             type: actionTypes.AUTH_SUCCESS,
             idToken: 'some-token',
@@ -28,7 +28,7 @@ describe('auth reducer', () => {
             userId: 'some-user-id',
             error: null,
             loading: false,
-            authRedirectPath:"/"
+            authRedirectPath: "/"
         });
     });
 });

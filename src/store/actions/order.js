@@ -23,7 +23,9 @@ export const purchaseBurgerStart = error => {
 
 export const purchaseBurger = (orderData, token) => {
 	return {
-		type: actionTypes.PURCHASE_BURGER_INIT
+        type: actionTypes.PURCHASE_BURGER_INIT,
+        token: token,
+        orderData: orderData
 	}
 }
 

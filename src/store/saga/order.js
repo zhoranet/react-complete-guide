@@ -2,25 +2,25 @@ import { put } from "redux-saga/effects";
 import * as actions from "../actions";
 import axios from "../../axios-orders";
 
-export function* purchaseBurgerSaga(orderData, token) {
+export function* purchaseBurgerSaga(action) {
 	yield put(actions.purchaseBurgerStart());
 	try {
 		const response = yield axios.post(
-			"/orders.json?auth=" + token,
-			orderData
+			"/orders.json?auth=" + action.token,
+			action.orderData
 		);
-		yield put(actions.purchaseBurgerSuccess(response.data.name, orderData));
+		yield put(actions.purchaseBurgerSuccess(response.data.name, action.orderData));
 	} catch (error) {
 		yield put(actions.purchaseBurgerFail(error));
 	}
 }
 
-export function* fetchOrdersSaga(token, userId) {
+export function* fetchOrdersSaga(action) {
 	yield put(actions.fetchOrdersStart());
 
 	try {
 		const queryParams =
-			"?auth=" + token + '&orderBy="userId"&equalTo="' + userId + '"';
+			"?auth=" + action.token + '&orderBy="userId"&equalTo="' + action.userId + '"';
 
 		const res = yield axios.get("/orders.json" + queryParams);
 
